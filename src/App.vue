@@ -1,11 +1,19 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <HelloWorld></HelloWorld>
   <router-view/>
-</template>
 
+</template>
+<script>
+import HelloWorld from '@/components/HelloWorld.vue'
+
+  export default {
+  name: 'HomeView',
+  components: {
+    HelloWorld,
+    
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
