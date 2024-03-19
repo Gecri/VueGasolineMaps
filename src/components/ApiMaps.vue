@@ -1,20 +1,16 @@
-<template>
-<div id="map">
-    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quia enim vel ut cum odit, optio iste quidem accusamus esse debitis, animi sapiente soluta eum! Harum voluptas quidem saepe odit!</h2>
-</div>
-</template>
+<script setup>
+import { GoogleMap, Marker } from 'vue3-google-map'
 
-<script>
-   
-    export default{
-        name: 'ApiMaps',
-    }
-
+const center = { lat: 20.7305861, lng: -103.3903628 }
 </script>
 
-<style scoped>
-    #map{
-        height: 500px;
-        width: 100%;
-    }
-</style>
+<template>
+  <GoogleMap
+  api-key="AIzaSyAU5X4IVScQeISwKYLNJBaxlCUF3JZs40o"
+  style="width: 100%; height: 400px"
+  :center="center"
+  :zoom="15"
+  >
+    <Marker :options="{ position: center }" />
+  </GoogleMap>
+</template>

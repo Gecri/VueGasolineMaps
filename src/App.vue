@@ -1,7 +1,9 @@
 <template>
   <HelloWorld></HelloWorld>
   <router-view/>
-
+  
+    <ApiMaps></ApiMaps>
+ 
 </template>
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
@@ -33,6 +35,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #16b882;
 }
 </style>
