@@ -1,5 +1,6 @@
 <template>
   <div class="Home">
+    <img alt="Vue logo" src="../assets/HeaderStart.jpg"  class="imgHeader">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <router-link to="/" class="navbar-brand" href="#">Gas Web</router-link>
@@ -46,5 +47,8 @@ li {
 a {
   color: #42b983;
 }
-
+.imgHeader{
+  max-width: 80%;
+  max-height: 30%;
+}
 </style>

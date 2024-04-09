@@ -2,7 +2,7 @@
   <HelloWorld></HelloWorld>
   <router-view/>
   
-    <ApiMaps></ApiMaps>
+    
  
 </template>
 <script>

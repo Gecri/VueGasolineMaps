@@ -1,5 +1,7 @@
 <template>
+  
   <div class="home">
+   
       <div class="row">
         <div class="logo col-2">
           <img alt="Vue logo" src="../assets/Logo.webp"  class="logo">
@@ -14,7 +16,7 @@
       </div>
     <div class="row">
       <div class="app">
-        
+      
         <PruebaComponente></PruebaComponente>
         <ApiMaps></ApiMaps> 
       </div>
