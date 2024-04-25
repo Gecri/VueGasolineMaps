@@ -1,20 +1,13 @@
 <template>
-  <HelloWorld></HelloWorld>
+  
   <router-view/>
   
-    
+    <ApiMaps></ApiMaps>
  
 </template>
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
 
-  export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-    
-  }
-}
+
 </script>
 <style>
 #app {
