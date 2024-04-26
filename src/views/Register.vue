@@ -7,17 +7,13 @@
           <div class="fadeIn first">
             <img src="@/assets/logo.png" id="icon" alt="User Icon" />
           </div>
-    
+  
           <!-- Login Form -->
           <form @submit.prevent="submitForm">
-            <input type="text" v-model="usuario" class="fadeIn second" name="login" placeholder="Username">
-            <input type="password" v-model="password" class="fadeIn third" name="password" placeholder="Password">
-            <input type="submit" class="fadeIn fourth" value="Sing In">
+            <input type="text" v-model="usuario" class="fadeIn second" name="login" placeholder="Email" />
+            <input type="password" v-model="password" class="fadeIn third" name="password" placeholder="Password" />
+            <input type="submit" class="fadeIn fourth" value="Sign In" />
           </form>
-    
-      
-         
-    
         </div>
       </div>
     </div>
@@ -26,31 +22,27 @@
   <script>
   import NavbarLogin from '@/components/NavbarLogin.vue';
   
-  
-  
-  
-  
   export default {
     name: 'RegisterUser',
-    components:{
-      NavbarLogin
+    components: {
+      NavbarLogin,
     },
     data() {
       return {
-        usuario: "",
-        password: "",
+        usuario: '',
+        password: '',
         error: false,
-        mss_error: "",
-      }
+        mss_error: '',
+      };
     },
     methods: {
       submitForm() {
-        // Aquí puedes manejar la lógica para enviar el formulario
-        console.log("Usuario:", this.usuario);
-        console.log("Contraseña:", this.password);
-      }
-    }
-  }
+        console.log('Usuario:', this.usuario);
+        console.log('Contraseña:', this.password);
+        // Puedes agregar aquí tu lógica de envío del formulario
+      },
+    },
+  };
   </script>
   
   <style scoped>
@@ -61,11 +53,15 @@
   }
   
   body {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .home {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Poppins", sans-serif;
-    background-color: #56baed;
+    height: 100vh; /* Centrar verticalmente */
+    background-color: #ffffff;
   }
   
   .wrapper {
@@ -78,21 +74,13 @@
     background: #fff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  }
-  
-  #formFooter {
-    background-color: #f6f6f6;
-    border-top: 1px solid #dce8f1;
-    padding: 25px;
-    border-radius: 0 0 10px 10px;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   }
   
   input[type="text"], input[type="password"] {
     width: 100%;
     padding: 15px 20px;
     margin: 10px 0;
-    display: inline-block;
     border: 2px solid #f6f6f6;
     border-radius: 5px;
     box-sizing: border-box;
@@ -104,33 +92,17 @@
     border: none;
     padding: 15px 80px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
   }
   
   input[type="submit"]:hover {
     background-color: #39ace7;
   }
   
-  .underlineHover:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background-color: #56baed;
-    transition: width 0.2s;
-  }
-  
-  .underlineHover:hover:after {
-    width: 100%;
-  }
-  
   .fadeIn {
-    animation: fadeIn ease-in 1;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;
+    animation: fadeIn 1s ease-in forwards;
   }
   
   @keyframes fadeIn {

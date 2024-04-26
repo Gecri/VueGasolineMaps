@@ -27,7 +27,7 @@
 </template>
 
 <script>
- import PruebaComponente from '@/components/Prueba.vue';
+
  import ApiMaps from '@/components/ApiMaps.vue';
  import Navbar from '@/components/HelloWorld.vue';
 
@@ -36,7 +36,7 @@
   name: 'HomeView' ,
     components: {
       Navbar,
-      PruebaComponente,
+     
       ApiMaps
     }
  }

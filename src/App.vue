@@ -1,12 +1,16 @@
 <template>
   
   <router-view/>
-  
-    <ApiMaps></ApiMaps>
- 
+    <FooterDefint></FooterDefint>
 </template>
 <script>
-
+import FooterDefint from '@/components/FooterDefint.vue';
+export default {
+    name: 'AppS',
+    components:{
+      FooterDefint
+    }
+  }
 
 </script>
 <style>
