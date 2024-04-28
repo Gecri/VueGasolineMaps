@@ -10,7 +10,7 @@
   
           <!-- Login Form -->
           <form @submit.prevent="submitForm">
-            <input type="text" v-model="usuario" class="fadeIn second" name="login" placeholder="Email" />
+            <input type="text" v-model="email" class="fadeIn second" name="login" placeholder="Email" />
             <input type="password" v-model="password" class="fadeIn third" name="password" placeholder="Password" />
             <input type="submit" class="fadeIn fourth" value="Sign In" />
           </form>
@@ -21,7 +21,8 @@
   
   <script>
   import NavbarLogin from '@/components/NavbarLogin.vue';
-  
+  import axios from 'axios';
+  axios.defaults.baseURL = 'http://localhost:3000'; 
   export default {
     name: 'RegisterUser',
     components: {
@@ -36,13 +37,24 @@
       };
     },
     methods: {
-      submitForm() {
-        console.log('Usuario:', this.usuario);
-        console.log('Contraseña:', this.password);
-        // Puedes agregar aquí tu lógica de envío del formulario
-      },
-    },
-  };
+  async submitForm() {
+    try {
+      // Realiza la solicitud POST
+      const response = await axios.post('/register', {
+        email: this.email,
+        password: this.password,
+      });
+
+      // Si necesitas hacer algo con la respuesta
+      console.log('Registro exitoso:', response.data);
+      
+    } catch (error) {
+      // Maneja el error si la solicitud falla
+      console.error('Error al registrar:', error.response?.data || error.message);
+    }
+  },
+},
+  }
   </script>
   
   <style scoped>

@@ -10,7 +10,7 @@
 
         <!-- Login Form -->
         <form @submit.prevent="submitForm">
-          <input type="text" v-model="usuario" class="fadeIn second" name="login" placeholder="Email">
+          <input type="text" v-model="email" class="fadeIn second" name="login" placeholder="Email">
           <input type="password" v-model="password" class="fadeIn third" name="password" placeholder="Password">
           <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
@@ -26,7 +26,8 @@
 
 <script>
 import NavbarLogin from '@/components/NavbarLogin.vue';
-
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3000'; 
 export default {
   name: 'LoginFirst',
   components: {
@@ -41,10 +42,24 @@ export default {
     };
   },
   methods: {
-    submitForm() {
-      console.log("Usuario:", this.usuario);
-      console.log("Contraseña:", this.password);
-    },
+    async submitForm() {
+    try {
+      // Realiza la solicitud POST
+      const response = await axios.post('/login', {
+        email: this.email,
+        password: this.password,
+      });
+
+      // Si necesitas hacer algo con la respuesta
+      if(response.status == 200){
+        this.$router.push('/home');
+      }
+      
+    } catch (error) {
+      // Maneja el error si la solicitud falla
+      console.error('Error al iniciar el inicio:', error.response?.data || error.message);
+    }
+  },
   },
 };
 </script>
