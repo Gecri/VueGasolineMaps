@@ -50,7 +50,7 @@ export default {
         password: this.password,
       });
 
-      // Si necesitas hacer algo con la respuesta
+      
       if(response.status == 200){
         this.$router.push('/home');
       }

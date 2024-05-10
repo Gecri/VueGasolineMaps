@@ -45,7 +45,7 @@
         password: this.password,
       });
 
-      // Si necesitas hacer algo con la respuesta
+     
       console.log('Registro exitoso:', response.data);
       
     } catch (error) {
