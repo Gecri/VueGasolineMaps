@@ -13,7 +13,7 @@ const Gasolineras = mongoose.model('Gasolineras',{
       },
       regular: { 
         type: Number, 
-        required: true 
+        required: false 
       },
       premium: { 
         type: Number, 

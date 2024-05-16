@@ -46,8 +46,8 @@ export default {
     try {
       // Realiza la solicitud POST
       const response = await axios.post('/login', {
-        email: this.email,
-        password: this.password,
+        email:this.email,
+        passwordt:this.password
       });
 
       

@@ -4,7 +4,8 @@ const expressJwt= require('express-jwt')
 
 const Users = require('./users');
 
-const signToke= _id =>jwt.sign({_id}, 'mi-secret') ;
+const signToke= _id =>jwt.sign({_id}, 'mi-secret',{expiresIn:'30m'}) ;
+
 const User = {
     create: async (req, res) =>{
         try {
@@ -23,7 +24,7 @@ const User = {
            await newUser.save();
            const sign= signToke(newUser._id);
             
-            res.status(201).send("Usuario creado correctamente");
+            res.status(201).send("Usuario creadoo correctamente");
         } catch (e) {
             console.error(e); 
             res.status(500).send("Error en el servidor");
@@ -41,7 +42,7 @@ const User = {
 
             const isMatch = await bcrypt.compare(password, user.password);
             if (isMatch) {
-                // Asegúrate de tener una clave secreta y definir el tiempo de expiración del token
+              
                 const token = jwt.sign({ id: user._id }, 'tu_clave_secreta');
                 res.status(200).json({ token }); // Devuelve el token
             } else {

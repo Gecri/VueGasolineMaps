@@ -1,7 +1,7 @@
 const puppeteer =  require('puppeteer')
 const GasolineraShema = require('../gasolinera');
 
-const a=async () => {
+const InsercionBaseScraping=async () => {
     // Iniciar el navegador y abrir una nueva pestaña
     const browser = await puppeteer.launch({
         headless:'new'
@@ -25,23 +25,22 @@ const a=async () => {
         const celdas = Array.from(fila.querySelectorAll('td'));
   
         return {
-          gasolinera: celdas[0].innerText, // Gasolinera
-          direccion: celdas[1].innerText, // Dirección
-          magna: celdas[2].innerText, // Magna
-          premium: celdas[3].innerText, // Premium
-          diesel: celdas[4].innerText // Diésel
+          gasolinera: celdas[0].innerText, 
+          direccion: celdas[1].innerText, 
+          regular: celdas[2].innerText, 
+          premium: celdas[3].innerText,
+          diesel: celdas[4].innerText 
         };
       });
     });
     try{
         await GasolineraShema.insertMany(datos).then(()=>{
-         // console.log('Datos insertados exitosamente');
+          console.log('Datos insertados exitosamente');
         });
     }catch(e){
         console.log(e)
     }
-    console.log(datos);
+    //console.log(datos);
     await browser.close();
   };
-  a();
-module.exports=a; 
+module.exports=InsercionBaseScraping; 

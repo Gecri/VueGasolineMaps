@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-//const Scraping= require('./Scrapping/gasolinerasScraping')
+const Scraping= require('./Scrapping/gasolinerasScraping')
 const User = require('./userController');
+const Gasolineras = require('./gasolinera')
 
 
 const app = express();
@@ -20,19 +21,30 @@ mongoose
 
 // Configuración de CORS para permitir solicitudes desde el front-end
 app.use(cors({
-  origin: 'http://localhost:8081', // Aquí defines el origen permitido
+  origin: 'http://localhost:8080', // Origen definido
 }));
 
 
 app.use(express.json());
 
+app.get('/dataGasolinera',async (req,res)=>{
+  try {
+    const Gas= await Gasolineras.find();
+    
+    res.send(Gas).status(200);
+  } catch (error) {
+    console.error('Error al buscar correos electrónicos de usuarios:', error);
+    res.status(500).json({ error: 'Error al buscar correos electrónicos de usuarios' });
+  }
+})
 
 app.post('/register', User.create);
 app.post('/login', User.login);
 
-//Scraping
-//clScraping(); // Llama a la función importada
 
+//Scrapingc
+//Scraping()// Llama a la función importadad
+//console.log(a)
 // // Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor ejecutándose en http://localhost:${port}`);

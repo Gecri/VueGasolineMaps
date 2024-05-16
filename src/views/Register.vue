@@ -49,7 +49,6 @@
       console.log('Registro exitoso:', response.data);
       
     } catch (error) {
-      // Maneja el error si la solicitud falla
       console.error('Error al registrar:', error.response?.data || error.message);
     }
   },
