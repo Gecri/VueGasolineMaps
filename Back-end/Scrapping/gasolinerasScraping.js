@@ -33,10 +33,15 @@ const InsercionBaseScraping=async () => {
         };
       });
     });
-    try{
-        await GasolineraShema.insertMany(datos).then(()=>{
-          console.log('Datos insertados exitosamente');
-        });
+    try {
+      for (const dato of datos) {
+          await GasolineraShema.findOneAndUpdate(
+              { gasolinera: dato.gasolinera, direccion: dato.direccion },
+              { $set: { regular: dato.regular, premium: dato.premium, diesel: dato.diesel } },
+              { upsert: true } // Crea un nuevo documento si no existe
+          );
+      }
+      console.log('Datos insertados/actualizados exitosamente');
     }catch(e){
         console.log(e)
     }

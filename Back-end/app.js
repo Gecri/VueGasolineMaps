@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const Scraping= require('./Scrapping/gasolinerasScraping')
+const Scraping= require('./Scrapping/gasolinerasScraping');
 const User = require('./userController');
-const Gasolineras = require('./gasolinera')
-
+const Gasolineras = require('./gasolinera');
+const verifyToken = require('./verifyToke');
 
 const app = express();
 const port = 3000; 
@@ -43,7 +43,8 @@ app.post('/login', User.login);
 
 
 //Scrapingc
-//Scraping()// Llama a la función importadad
+// Llama a la función importadad
+Scraping();
 //console.log(a)
 // // Iniciar el servidor
 app.listen(port, () => {

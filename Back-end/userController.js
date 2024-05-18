@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken'); // Importa el paquete JWT
-const expressJwt= require('express-jwt')
+const expressJwt = require('express-jwt');
 
 const Users = require('./users');
 
-const signToke= _id =>jwt.sign({_id}, 'mi-secret',{expiresIn:'30m'}) ;
+
 
 const User = {
     create: async (req, res) =>{
@@ -22,9 +22,10 @@ const User = {
             const newUser = new Users({ email, password: hashedPassword });
             
            await newUser.save();
-           const sign= signToke(newUser._id);
-            
-            res.status(201).send("Usuario creadoo correctamente");
+           const token = jwt.sign({id: newUser._id},process.env.SECRET,{
+            expiresIn: 60 *60 *42
+           })             
+            res.status(201).json({auth:true, token})
         } catch (e) {
             console.error(e); 
             res.status(500).send("Error en el servidor");
@@ -43,7 +44,7 @@ const User = {
             const isMatch = await bcrypt.compare(password, user.password);
             if (isMatch) {
               
-                const token = jwt.sign({ id: user._id }, 'tu_clave_secreta');
+                const token = jwt.sign({ id: user._id }, process.env.SECRET);
                 res.status(200).json({ token }); // Devuelve el token
             } else {
                 res.status(403).json({ error: 'Usuario y/o contraseña inválidos' });
